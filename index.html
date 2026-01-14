@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sổ tay Nguyên hàm – Tích phân</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/png.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/png.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/png.png" />
+
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        background: linear-gradient(to right, #cfe2ff, #f8fbff);
+      }
+      header {
+        background: #0a4fa3;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 26px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+      }
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: white;
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+      .card h3 {
+        color: #0a4fa3;
+      }
+      button {
+        background: #0a4fa3;
+        color: white;
+        border: none;
+        padding: 7px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .solution {
+        display: none;
+        background: #eef3ff;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #555;
+      }
+
+      .container {
+        max-width: 1400px;
+      }
+      .menu {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      .card {
+        transition: 0.25s;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+      }
+      .solution {
+        animation: fade 0.4s ease;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+    <script>
+      function show(id) {
+        let e = document.getElementById(id);
+        e.style.display = e.style.display == "block" ? "none" : "block";
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>📘 SỔ TAY NGUYÊN HÀM – TÍCH PHÂN TOÁN 12</header>
+    <div class="container">
+      <div class="menu">
+        <div class="card">
+          <h3>Dạng 1: Nguyên hàm trực tiếp</h3>
+          <p>∫(3x² + 5x - 1)dx</p>
+          <button onclick="show('s1')">Xem lời giải chi tiết</button>
+          <div class="solution" id="s1">
+            Bước 1: Tách tổng <br />
+            ∫3x²dx + ∫5xdx - ∫1dx <br />
+            Bước 2: Tính từng phần <br />
+            = x³ + 5/2x² - x + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 2: Nguyên hàm có điều kiện</h3>
+          <p>Tìm F(x) biết F'(x) = 2, F(1) = 3</p>
+          <button onclick="show('s2')">Xem lời giải chi tiết</button>
+          <div class="solution" id="s2">
+            Bước 1: Tìm nguyên hàm của F'(x) <br />
+            F'(x) = 2 ⇒ F(x) = ∫2 dx = 2x + C <br /><br />
+
+            Bước 2: Dùng điều kiện để tìm C <br />
+            Thay x = 1 vào F(x): <br />
+            F(1) = 2·1 + C = 3 <br />
+            ⇒ C = 1 <br /><br />
+
+            Bước 3: Kết luận <br />
+            Vậy: <b>F(x) = 2x + 1</b>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 3: Nguyên hàm hàm hợp f(ax+b)</h3>
+          <p>Tính ∫ sin(2x + 1) dx</p>
+          <button onclick="show('s3')">Xem lời giải chi tiết</button>
+          <div class="solution" id="s3">
+            Bước 1: Đặt biến phụ <br />
+            Đặt u = 2x + 1 ⇒ du = 2dx <br /><br />
+
+            Bước 2: Đổi tích phân theo u <br />
+            ∫ sin(2x + 1) dx = 1/2 ∫ sin u du <br /><br />
+
+            Bước 3: Tính nguyên hàm theo u <br />
+            = 1/2 · (−cos u) + C <br /><br />
+
+            Bước 4: Thế lại u = 2x + 1 <br />
+            = −1/2 cos(2x + 1) + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 4: Nguyên hàm lượng giác cơ bản</h3>
+          <p>Tính ∫ 3cos x dx</p>
+          <button onclick="show('s4')">Xem lời giải chi tiết</button>
+          <div class="solution" id="s4">
+            Bước 1: Đưa hằng số ra ngoài <br />
+            ∫ 3cos x dx = 3 ∫ cos x dx <br /><br />
+
+            Bước 2: Áp dụng bảng nguyên hàm lượng giác <br />
+            ∫ cos x dx = sin x + C <br /><br />
+
+            Bước 3: Kết luận <br />
+            = 3 sin x + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 5: Đổi biến dạng chuẩn</h3>
+          <p>Tính ∫ (2x + 1)⁴ dx</p>
+          <button onclick="show('s5')">Xem lời giải chi tiết</button>
+          <div class="solution" id="s5">
+            Bước 1: Đặt biến phụ <br />
+            u = 2x + 1 ⇒ du = 2dx <br /><br />
+
+            Bước 2: Đổi tích phân <br />
+            ∫ (2x + 1)⁴ dx = 1/2 ∫ u⁴ du <br /><br />
+
+            Bước 3: Tính nguyên hàm theo u <br />
+            = 1/2 · u⁵/5 + C = u⁵/10 + C <br /><br />
+
+            Bước 4: Thế lại u <br />
+            = (2x + 1)⁵/10 + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 5: Đổi biến dạng chuẩn</h3>
+          <p>Tính ∫ x√(x² + 1) dx</p>
+          <button onclick="show('s5b')">Xem lời giải chi tiết</button>
+          <div class="solution" id="s5b">
+            Bước 1: Đặt biến phụ <br />
+            u = x² + 1 ⇒ du = 2x dx <br /><br />
+
+            Bước 2: Đổi tích phân <br />
+            ∫ x√(x² + 1) dx = 1/2 ∫ √u du <br /><br />
+
+            Bước 3: Tính nguyên hàm theo u <br />
+            = 1/2 · (2/3)u^{3/2} + C <br /><br />
+
+            Bước 4: Thế lại u <br />
+            = (x² + 1)^{3/2}/3 + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 6: Đổi biến nâng cao</h3>
+          <p>∫ x / √(x² + 4) dx</p>
+
+          <button onclick="show('s6')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s6">
+            Bước 1: Đặt biến đổi <br />
+            Đặt t = x² + 4 ⇒ dt = 2x dx <br />
+            ⇒ x dx = 1/2 dt <br /><br />
+
+            Bước 2: Đổi tích phân <br />
+            ∫ x / √(x² + 4) dx = 1/2 ∫ dt / √t <br /><br />
+
+            Bước 3: Tính nguyên hàm <br />
+            = 1/2 · 2√t + C = √t + C <br /><br />
+
+            Bước 4: Thế lại biến <br />
+            = √(x² + 4) + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 7: Tích của đa thức và hàm khác</h3>
+          <p>∫ x e<sup>x</sup> dx</p>
+
+          <button onclick="show('s7')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s7">
+            Bước 1: Áp dụng tích phân từng phần <br />
+            Chọn: <br />
+            u = x ⇒ du = dx <br />
+            dv = e<sup>x</sup> dx ⇒ v = e<sup>x</sup> <br /><br />
+
+            Bước 2: Công thức từng phần <br />
+            ∫u dv = uv − ∫v du <br /><br />
+
+            Bước 3: Tính <br />
+            = x·e<sup>x</sup> − ∫ e<sup>x</sup> dx <br />
+            = x·e<sup>x</sup> − e<sup>x</sup> + C <br /><br />
+
+            Kết quả: <br />
+            = e<sup>x</sup>(x − 1) + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 8: Nguyên hàm logarit</h3>
+          <p>∫ ln x dx</p>
+
+          <button onclick="show('s8')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s8">
+            Bước 1: Áp dụng tích phân từng phần <br />
+            u = ln x ⇒ du = 1/x dx <br />
+            dv = dx ⇒ v = x <br /><br />
+
+            Bước 2: Áp dụng công thức <br />
+            ∫ ln x dx = x ln x − ∫ x·(1/x) dx <br /><br />
+
+            Bước 3: Tính <br />
+            = x ln x − ∫ 1 dx <br />
+            = x ln x − x + C
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 9: Tính tích phân trực tiếp</h3>
+          <p>∫<sub>0</sub><sup>1</sup> (x² + 1) dx</p>
+
+          <button onclick="show('s9')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s9">
+            Bước 1: Tìm nguyên hàm <br />
+            ∫(x² + 1) dx = x³/3 + x <br /><br />
+
+            Bước 2: Thế cận <br />
+            = (1³/3 + 1) − (0 + 0) <br /><br />
+
+            Kết quả: <br />
+            = 4/3
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 10: Tích phân có đổi biến / từng phần</h3>
+          <p>∫<sub>0</sub><sup>1</sup> x e<sup>x</sup> dx</p>
+
+          <button onclick="show('s10')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s10">
+            Bước 1: Dùng tích phân từng phần <br />
+            u = x ⇒ du = dx <br />
+            dv = e<sup>x</sup> dx ⇒ v = e<sup>x</sup> <br /><br />
+
+            Bước 2: Áp dụng công thức <br />
+            ∫ x e<sup>x</sup> dx = x e<sup>x</sup> − ∫ e<sup>x</sup> dx <br />
+            = x e<sup>x</sup> − e<sup>x</sup> <br /><br />
+
+            Bước 3: Thế cận <br />
+            = (1·e − e) − (0 − 1) <br /><br />
+
+            Kết quả: <br />
+            = 1
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 11: Khai thác tính chất tích phân</h3>
+          <p>∫<sub>-1</sub><sup>1</sup> x³ dx</p>
+
+          <button onclick="show('s11')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s11">
+            Nhận xét: <br />
+            Hàm số y = x³ là hàm lẻ <br /><br />
+
+            Tính chất: <br />
+            ∫<sub>-a</sub><sup>a</sup> hàm lẻ dx = 0 <br /><br />
+
+            Kết quả: <br />
+            ∫<sub>-1</sub><sup>1</sup> x³ dx = 0
+          </div>
+        </div>
+        <div class="card">
+          <h3>Dạng 12: Diện tích hình phẳng với trục hoành</h3>
+          <p>Diện tích hình phẳng giới hạn bởi y = x² và trục Ox</p>
+
+          <button onclick="show('s12')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s12">
+            <b>Bước 1:</b> Tìm giao điểm với trục Ox <br />
+            x² = 0 ⇒ x = 0 <br /><br />
+
+            <b>Bước 2:</b> Lập công thức diện tích <br />
+            S = ∫<sub>0</sub><sup>a</sup> x² dx <br /><br />
+
+            <b>Bước 3:</b> Tính tích phân <br />
+            ∫ x² dx = x³ / 3 <br /><br />
+
+            <b>Kết luận:</b> <br />
+            S = x³/3 |<sub>0</sub><sup>a</sup>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 13: Diện tích giữa hai đồ thị</h3>
+          <p>Diện tích giữa y = x² và y = 2x</p>
+
+          <button onclick="show('s13')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s13">
+            <b>Bước 1:</b> Tìm giao điểm <br />
+            x² = 2x ⇒ x(x − 2) = 0 ⇒ x = 0, x = 2 <br /><br />
+
+            <b>Bước 2:</b> Xác định hàm trên – hàm dưới <br />
+            Trên đoạn [0,2]: 2x ≥ x² <br /><br />
+
+            <b>Bước 3:</b> Lập tích phân diện tích <br />
+            S = ∫<sub>0</sub><sup>2</sup> (2x − x²) dx <br /><br />
+
+            <b>Bước 4:</b> Tính <br />
+            = (x² − x³/3)|<sub>0</sub><sup>2</sup>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 14: Bài toán thực tế</h3>
+          <p>
+            Một vật chuyển động với vận tốc v(t) = 3t² (m/s). Tính quãng đường
+            đi được trong 2 giây.
+          </p>
+
+          <button onclick="show('s14')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s14">
+            <b>Bước 1:</b> Công thức quãng đường <br />
+            s = ∫ v(t) dt <br /><br />
+
+            <b>Bước 2:</b> Lập tích phân <br />
+            s = ∫<sub>0</sub><sup>2</sup> 3t² dt <br /><br />
+
+            <b>Bước 3:</b> Tính <br />
+            = t³ |<sub>0</sub><sup>2</sup> = 8 (m)
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dạng 15: Trắc nghiệm – nhận dạng nhanh</h3>
+          <p>∫<sub>-2</sub><sup>2</sup> (x² + 1) dx</p>
+
+          <button onclick="show('s15')">Xem lời giải chi tiết</button>
+
+          <div class="solution" id="s15">
+            <b>Nhận dạng nhanh:</b> <br />
+            x² là hàm chẵn, 1 là hàm chẵn ⇒ tổng là hàm chẵn. <br /><br />
+
+            <b>Áp dụng:</b> <br />
+            ∫<sub>-a</sub><sup>a</sup> f(x)dx = 2∫<sub>0</sub
+            ><sup>a</sup> f(x)dx <br /><br />
+
+            <b>Kết luận:</b> <br />
+            = 2∫<sub>0</sub><sup>2</sup> (x² + 1)dx
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>© Sổ tay Toán 12 – Nguyên hàm & Tích phân</footer>
+  </body>
+</html>
